@@ -1,0 +1,10 @@
+F:\Github repos\CNote\CNote\bin\Debug\CNote.exe.config
+F:\Github repos\CNote\CNote\bin\Debug\CNote.exe
+F:\Github repos\CNote\CNote\bin\Debug\CNote.pdb
+F:\Github repos\CNote\CNote\obj\Debug\CNote.csprojAssemblyReference.cache
+F:\Github repos\CNote\CNote\obj\Debug\CNote.Menu.resources
+F:\Github repos\CNote\CNote\obj\Debug\CNote.Properties.Resources.resources
+F:\Github repos\CNote\CNote\obj\Debug\CNote.csproj.GenerateResource.cache
+F:\Github repos\CNote\CNote\obj\Debug\CNote.csproj.CoreCompileInputs.cache
+F:\Github repos\CNote\CNote\obj\Debug\CNote.exe
+F:\Github repos\CNote\CNote\obj\Debug\CNote.pdb
