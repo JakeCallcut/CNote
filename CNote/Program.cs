@@ -18,5 +18,6 @@ namespace CNote
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Menu());
         }
+            public static string purpose = "";
     }
 }

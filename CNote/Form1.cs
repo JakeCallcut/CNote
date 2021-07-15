@@ -16,5 +16,23 @@ namespace CNote
         {
             InitializeComponent();
         }
+
+        private void Menu_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Program.purpose = "EXIT";
+            InfoBox _info = new InfoBox("Are you sure?");
+            _info.Text = "Quit CNote?";
+            _info.Show();
+        }
     }
 }
