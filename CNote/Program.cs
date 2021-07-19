@@ -16,7 +16,9 @@ namespace CNote
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Menu());
+
+            Menu _menu = new Menu();
+            Application.Run(_menu);
         }
             public static string purpose = "";
     }

@@ -34,5 +34,12 @@ namespace CNote
             _info.Text = "Quit CNote?";
             _info.Show();
         }
+
+        private void btnNotes_Click(object sender, EventArgs e)
+        {
+            NotesMenu _notes = new NotesMenu();
+            _notes.Show();
+            this.Hide();
+        }
     }
 }

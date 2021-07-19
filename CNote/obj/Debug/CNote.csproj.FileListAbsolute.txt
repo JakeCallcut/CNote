@@ -10,3 +10,6 @@ F:\Github repos\CNote\CNote\obj\Debug\CNote.exe
 F:\Github repos\CNote\CNote\obj\Debug\CNote.pdb
 F:\Github repos\CNote\CNote\obj\Debug\CNote.InfoBox.resources
 F:\Github repos\CNote\CNote\obj\Debug\CNote.NotesMenu.resources
+F:\Github repos\CNote\CNote\bin\Debug\Newtonsoft.Json.dll
+F:\Github repos\CNote\CNote\bin\Debug\Newtonsoft.Json.xml
+F:\Github repos\CNote\CNote\obj\Debug\CNote.csproj.CopyComplete
