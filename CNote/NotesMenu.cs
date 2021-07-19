@@ -43,7 +43,7 @@ namespace CNote
 
         private void lstNoteList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            lstNote.Items.Clear();
+            rchNote.Text = "";
             string currentItem = lstNoteList.SelectedItem.ToString();
             string path = @"..\Dependencies\notes\";
             path = path + currentItem + ".txt";
@@ -54,9 +54,10 @@ namespace CNote
                     string s;
                     while ((s = sr.ReadLine()) != null)
                     {
-                        lstNote.Items.Add(s);
+                        rchNote.Text += Environment.NewLine + s;
                     }
                 }
+                lblTitle.Text = currentItem;
             }
             else
             {
@@ -64,19 +65,49 @@ namespace CNote
             }
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void NotesMenu_Load(object sender, EventArgs e)
-        {
-        }
-
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             
         }
 
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }//
+
+        private void NotesMenu_Load(object sender, EventArgs e)
+        {
+        }//
+
+        private void rchNote_TextChanged(object sender, EventArgs e)
+        {
+
+        }//
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox2_MouseHover(object sender, EventArgs e)
+        {
+            pictureBox2.BackColor = Color.FromArgb(56, 135, 94);
+        }
+
+        private void pictureBox2_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBox2.BackColor = Color.FromArgb(71, 170, 119);
+        }
+
+
+        private void pictureBox3_MouseHover(object sender, EventArgs e)
+        {
+            pictureBox3.BackColor = Color.FromArgb(56, 135, 94);
+        }
+
+        private void pictureBox3_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBox3.BackColor = Color.FromArgb(71, 170, 119);
+        }
     }
 }

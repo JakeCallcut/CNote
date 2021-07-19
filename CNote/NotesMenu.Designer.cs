@@ -37,8 +37,9 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.lstNote = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.rchNote = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -105,6 +106,7 @@
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox4.TabIndex = 3;
             this.pictureBox4.TabStop = false;
+            this.pictureBox4.MouseHover += new System.EventHandler(this.pictureBox2_MouseHover);
             // 
             // pictureBox3
             // 
@@ -117,6 +119,8 @@
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 3;
             this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
+            this.pictureBox3.MouseHover += new System.EventHandler(this.pictureBox2_MouseHover);
             // 
             // pictureBox2
             // 
@@ -130,6 +134,8 @@
             this.pictureBox2.TabIndex = 3;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            this.pictureBox2.MouseLeave += new System.EventHandler(this.pictureBox2_MouseLeave);
+            this.pictureBox2.MouseHover += new System.EventHandler(this.pictureBox2_MouseHover);
             // 
             // label2
             // 
@@ -141,19 +147,6 @@
             this.label2.Size = new System.Drawing.Size(210, 45);
             this.label2.TabIndex = 10;
             this.label2.Text = "Select a Note";
-            // 
-            // lstNote
-            // 
-            this.lstNote.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(137)))), ((int)(((byte)(211)))), ((int)(((byte)(173)))));
-            this.lstNote.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.lstNote.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lstNote.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(63)))), ((int)(((byte)(42)))));
-            this.lstNote.FormattingEnabled = true;
-            this.lstNote.ItemHeight = 32;
-            this.lstNote.Location = new System.Drawing.Point(346, 188);
-            this.lstNote.Name = "lstNote";
-            this.lstNote.Size = new System.Drawing.Size(759, 608);
-            this.lstNote.TabIndex = 8;
             // 
             // label3
             // 
@@ -167,15 +160,38 @@
             this.label3.Text = "Note:";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Location = new System.Drawing.Point(442, 140);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(29, 45);
+            this.lblTitle.TabIndex = 11;
+            this.lblTitle.Text = " ";
+            // 
+            // rchNote
+            // 
+            this.rchNote.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(137)))), ((int)(((byte)(211)))), ((int)(((byte)(173)))));
+            this.rchNote.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.rchNote.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rchNote.Location = new System.Drawing.Point(346, 188);
+            this.rchNote.Name = "rchNote";
+            this.rchNote.Size = new System.Drawing.Size(748, 608);
+            this.rchNote.TabIndex = 12;
+            this.rchNote.Text = "";
+            this.rchNote.TextChanged += new System.EventHandler(this.rchNote_TextChanged);
+            // 
             // NotesMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(170)))), ((int)(((byte)(119)))));
             this.ClientSize = new System.Drawing.Size(1140, 832);
+            this.Controls.Add(this.rchNote);
+            this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.lstNote);
             this.Controls.Add(this.lstNoteList);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
@@ -203,10 +219,11 @@
         private System.Windows.Forms.ListBox lstNoteList;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ListBox lstNote;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.RichTextBox rchNote;
     }
 }
