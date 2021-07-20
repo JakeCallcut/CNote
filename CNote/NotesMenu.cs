@@ -57,7 +57,7 @@ namespace CNote
                         rchNote.Text += Environment.NewLine + s;
                     }
                 }
-                lblTitle.Text = currentItem;
+                txtTitle.Text = currentItem;
             }
             else
             {
@@ -67,7 +67,56 @@ namespace CNote
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            
+            string titlePath = @"..\Dependencies\notes\!Titles.txt";
+            string newNotePath = @"..\Dependencies\notes\New Note.txt";
+            StreamWriter sw;
+
+            if (File.Exists(titlePath))
+            {
+
+                if (!File.Exists(newNotePath))
+                {
+                    sw = File.CreateText(newNotePath);
+                    sw.Close();
+                    using (sw = File.AppendText(titlePath))
+                    {
+                        sw.WriteLine("New Note");
+                        lstNoteList.Items.Add("New Note");
+                    }
+                }
+                else
+                {
+                    int i = 1;
+                    bool created = false;
+                    do
+                    {
+                        newNotePath = @"..\Dependencies\notes\New Note";
+                        newNotePath = newNotePath + Convert.ToString(i) + ".txt";
+
+                        if (!File.Exists(newNotePath))
+                        {
+                            sw = File.CreateText(newNotePath);
+                            sw.Close();
+                            created = true;
+                            using (sw = File.AppendText(titlePath))
+                            {
+                                sw.WriteLine("New Note{0}", i);
+                                lstNoteList.Items.Add("New Note" + i);
+                            }
+                        }
+                        else
+                        {
+                            i++;
+                        }
+                    } while (created == false);
+                }
+            }
+            else
+            {
+                MessageBox.Show("File !Titles.txt is missing", "Critical Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
         }
 
         private void label3_Click(object sender, EventArgs e)

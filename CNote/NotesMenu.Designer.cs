@@ -38,8 +38,8 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.lblTitle = new System.Windows.Forms.Label();
             this.rchNote = new System.Windows.Forms.RichTextBox();
+            this.txtTitle = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -160,16 +160,6 @@
             this.label3.Text = "Note:";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
-            // lblTitle
-            // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(442, 140);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(29, 45);
-            this.lblTitle.TabIndex = 11;
-            this.lblTitle.Text = " ";
-            // 
             // rchNote
             // 
             this.rchNote.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(137)))), ((int)(((byte)(211)))), ((int)(((byte)(173)))));
@@ -182,14 +172,23 @@
             this.rchNote.Text = "";
             this.rchNote.TextChanged += new System.EventHandler(this.rchNote_TextChanged);
             // 
+            // txtTitle
+            // 
+            this.txtTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(137)))), ((int)(((byte)(211)))), ((int)(((byte)(173)))));
+            this.txtTitle.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTitle.Location = new System.Drawing.Point(673, 140);
+            this.txtTitle.Name = "txtTitle";
+            this.txtTitle.Size = new System.Drawing.Size(421, 40);
+            this.txtTitle.TabIndex = 13;
+            // 
             // NotesMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(170)))), ((int)(((byte)(119)))));
             this.ClientSize = new System.Drawing.Size(1140, 832);
+            this.Controls.Add(this.txtTitle);
             this.Controls.Add(this.rchNote);
-            this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lstNoteList);
@@ -223,7 +222,7 @@
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.RichTextBox rchNote;
+        private System.Windows.Forms.TextBox txtTitle;
     }
 }
