@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https:/github.com/JakeCallcut/CNote/blob/main/CNote/bin/Dependencies/Screenshots/menusc.png" width=400 style="margin-bottom:-25px"><br>
+    <img src="https://github.com/JakeCallcut/CNote/blob/main/CNote/bin/Dependencies/Screenshots/menusc.png" width=400 style="margin-bottom:-25px"><br>
     <img src="https://img.shields.io/badge/Framework-.NET-orange"  style="margin-right: 5px">
     <img src="https://img.shields.io/badge/Language-C%23-green"  style="margin-right:-5px"><br>
 </p>
