@@ -115,8 +115,25 @@ namespace CNote
             {
                 MessageBox.Show("File !Titles.txt is missing", "Critical Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
 
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            string currentItem = lstNoteList.SelectedItem.ToString();
+            string path = @"..\Dependencies\notes\";
+            path = path + currentItem + ".txt";
 
+            using (var sw = new StreamWriter(path))
+            {
+                File.WriteAllText(path, " ");
+
+                string[] noteContents = rchNote.Lines;
+
+                for (int i = 0; i < noteContents.Length; i++)
+                {
+                    sw.WriteLine(noteContents[i]);
+                }
+            }
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -158,5 +175,6 @@ namespace CNote
         {
             pictureBox3.BackColor = Color.FromArgb(71, 170, 119);
         }
+
     }
 }
