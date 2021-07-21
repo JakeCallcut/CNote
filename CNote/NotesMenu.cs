@@ -44,6 +44,7 @@ namespace CNote
         private void lstNoteList_SelectedIndexChanged(object sender, EventArgs e)
         {
             rchNote.Text = "";
+            txtTitle.Text = "";
             string currentItem = lstNoteList.SelectedItem.ToString();
             string path = @"..\Dependencies\notes\";
             path = path + currentItem + ".txt";
@@ -77,6 +78,7 @@ namespace CNote
                 if (!File.Exists(newNotePath))
                 {
                     sw = File.CreateText(newNotePath);
+                    sw.Flush();
                     sw.Close();
                     using (sw = File.AppendText(titlePath))
                     {
@@ -96,6 +98,7 @@ namespace CNote
                         if (!File.Exists(newNotePath))
                         {
                             sw = File.CreateText(newNotePath);
+                            sw.Flush();
                             sw.Close();
                             created = true;
                             using (sw = File.AppendText(titlePath))
@@ -119,21 +122,46 @@ namespace CNote
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
+            string titlePath = @"..\Dependencies\notes\!Titles.txt";
             string currentItem = lstNoteList.SelectedItem.ToString();
             string path = @"..\Dependencies\notes\";
             path = path + currentItem + ".txt";
 
-            using (var sw = new StreamWriter(path))
+            string[] fileArray = File.ReadAllLines(titlePath);
+            for (int i = 0; i < fileArray.Length; i++)
             {
-                File.WriteAllText(path, " ");
-
-                string[] noteContents = rchNote.Lines;
-
-                for (int i = 0; i < noteContents.Length; i++)
+                if ( fileArray[i] == currentItem)
                 {
-                    sw.WriteLine(noteContents[i]);
+                    fileArray[i] = txtTitle.Text;
+                    File.WriteAllLines(titlePath, fileArray);
+                }
+            }               
+
+            File.WriteAllText(path, " ");
+            string[] noteContents = rchNote.Lines;
+            File.WriteAllLines(path, noteContents);
+
+            string newPath = @"..\Dependencies\notes\";
+            newPath = newPath + txtTitle.Text + ".txt";
+            File.Move(path, newPath);
+
+            lstNoteList.Items.Clear();
+            if (File.Exists(titlePath))
+            {
+                using (StreamReader sr = File.OpenText(titlePath))
+                {
+                    string s;
+                    while ((s = sr.ReadLine()) != null)
+                    {
+                        lstNoteList.Items.Add(s);
+                    }
                 }
             }
+            else
+            {
+                MessageBox.Show("File !Titles.txt is missing", "Critical Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void label3_Click(object sender, EventArgs e)
