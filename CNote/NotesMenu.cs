@@ -180,7 +180,41 @@ namespace CNote
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
+            string currentItem = lstNoteList.SelectedItem.ToString();
+            var _delete = new InfoBox("Are you sure you want to delete " + currentItem);
+            Program.purpose = "DELFILE";
+            _delete.Show();
+                                                        //last edit, doesnt wait fo ran answer
+            if (Program.returned == "DEL")
+            {
+                rchNote.Clear();
+                txtTitle.Text = "";
 
+                string titlePath = @"..\Dependencies\notes\!Titles.txt";
+
+                string[] fileArray = File.ReadAllLines(titlePath);
+                int Index = Array.IndexOf(fileArray, currentItem);
+                fileArray[Index] = "";
+                /*
+                for (int i = Index + 1; i < fileArray.Length; i++)      //move all items after Index back by one
+                {
+                    fileArray[i - 1] = fileArray[i];
+                }
+
+                */
+                File.WriteAllLines(titlePath, fileArray);
+
+
+                string path = @"..\Dependencies\notes\";
+                path = path + currentItem + ".txt";
+                File.Delete(path);
+                Program.returned = "";
+            }
+            else
+            {
+                Program.returned = "";
+                MessageBox.Show("it made it here");
+            }
         }
 
         private void pictureBox2_MouseHover(object sender, EventArgs e)

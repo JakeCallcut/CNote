@@ -85,7 +85,8 @@
             this.Controls.Add(this.lblText);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "InfoBox";
-            this.Text = "InfoBox";
+            this.Text = "CNote - Info";
+            this.Load += new System.EventHandler(this.InfoBox_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

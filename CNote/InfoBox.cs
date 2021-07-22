@@ -24,6 +24,11 @@ namespace CNote
             {
                 Application.Exit();
             }
+            if (Program.purpose == "DELFILE")
+            {
+                Program.returned = "DEL";
+                this.Close();
+            }
         }
 
         private void btnNo_Click(object sender, EventArgs e)
@@ -32,6 +37,15 @@ namespace CNote
             {
                 this.Close();
             }
+            if (Program.purpose == "DELFILE")
+            {
+                this.Close();
+            }
+        }
+
+        private void InfoBox_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

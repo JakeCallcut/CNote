@@ -21,5 +21,6 @@ namespace CNote
             Application.Run(_menu);
         }
             public static string purpose = "";
+            public static string returned = "";
     }
 }
