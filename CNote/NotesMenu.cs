@@ -184,15 +184,21 @@ namespace CNote
                 string[] fileArray = File.ReadAllLines(titlePath);
                 int Index = Array.IndexOf(fileArray, currentItem);
                 fileArray[Index] = "";
-                /*
-                for (int i = Index + 1; i < fileArray.Length; i++)      //move all items after Index back by one
+
+                if (Index == fileArray.Length)
                 {
-                    fileArray[i - 1] = fileArray[i];
+                    Array.Resize(ref fileArray, Index - 1);
+                }
+                else
+                {
+                    for (int i = Index; i < fileArray.Length - 1; i++)
+                    {
+                        fileArray[Index] = fileArray[Index + 1];
+                    }
+                    Array.Resize(ref fileArray, fileArray.Length - 1);
                 }
 
-                */
                 File.WriteAllLines(titlePath, fileArray);
-
 
                 string path = @"..\Dependencies\notes\";
                 path = path + currentItem + ".txt";
@@ -202,7 +208,6 @@ namespace CNote
             else
             {
                 Program.returned = "";
-                MessageBox.Show("it made it here");
             }
 
             LoadNoteList();
