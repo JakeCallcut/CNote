@@ -50,24 +50,29 @@ namespace CNote
         {
             rchNote.Text = "";
             txtTitle.Text = "";
-            string currentItem = lstNoteList.SelectedItem.ToString();
-            string path = @"..\Dependencies\notes\";
-            path = path + currentItem + ".txt";
-            if (File.Exists(path))
-            {
-                using (StreamReader sr = File.OpenText(path))
-                {
-                    string s;
-                    while ((s = sr.ReadLine()) != null)
-                    {
-                        rchNote.Text += Environment.NewLine + s;
-                    }
-                }
-                txtTitle.Text = currentItem;
-            }
+
+            if (lstNoteList.SelectedItem == null) { }
             else
             {
-                MessageBox.Show("The file for this note is missing", "Critical Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string currentItem = lstNoteList.SelectedItem.ToString();
+                string path = @"..\Dependencies\notes\";
+                path = path + currentItem + ".txt";
+                if (File.Exists(path))
+                {
+                    using (StreamReader sr = File.OpenText(path))
+                    {
+                        string s;
+                        while ((s = sr.ReadLine()) != null)
+                        {
+                            rchNote.Text += Environment.NewLine + s;
+                        }
+                    }
+                    txtTitle.Text = currentItem;
+                }
+                else
+                {
+                    MessageBox.Show("The file for this note is missing", "Critical Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -128,29 +133,35 @@ namespace CNote
         private void pictureBox4_Click(object sender, EventArgs e)              //save changes
         {
             string titlePath = @"..\Dependencies\notes\!Titles.txt";
-            string currentItem = lstNoteList.SelectedItem.ToString();
-            string path = @"..\Dependencies\notes\";
-            path = path + currentItem + ".txt";
 
-            string[] fileArray = File.ReadAllLines(titlePath);
-            for (int i = 0; i < fileArray.Length; i++)
+            if (lstNoteList.SelectedItem == null) { }
+            else
             {
-                if ( fileArray[i] == currentItem)
+                string currentItem = lstNoteList.SelectedItem.ToString();
+                string path = @"..\Dependencies\notes\";
+                path = path + currentItem + ".txt";
+
+                string[] fileArray = File.ReadAllLines(titlePath);
+                for (int i = 0; i < fileArray.Length; i++)
                 {
-                    fileArray[i] = txtTitle.Text;
-                    File.WriteAllLines(titlePath, fileArray);
-                }
-            }               
+                    if ( fileArray[i] == currentItem)
+                    {
+                        fileArray[i] = txtTitle.Text;
+                        File.WriteAllLines(titlePath, fileArray);
+                    }
+                }               
 
-            File.WriteAllText(path, " ");
-            string[] noteContents = rchNote.Lines;
-            File.WriteAllLines(path, noteContents);
+                File.WriteAllText(path, " ");
+                string[] noteContents = rchNote.Lines;
+                File.WriteAllLines(path, noteContents);
 
-            string newPath = @"..\Dependencies\notes\";
-            newPath = newPath + txtTitle.Text + ".txt";
-            File.Move(path, newPath);
+                string newPath = @"..\Dependencies\notes\";
+                newPath = newPath + txtTitle.Text + ".txt";
+                File.Move(path, newPath);
 
-            LoadNoteList();
+                LoadNoteList();
+            }
+           
 
         }
 
@@ -170,47 +181,51 @@ namespace CNote
 
         private void pictureBox3_Click(object sender, EventArgs e)              //delete note
         {
-            string currentItem = lstNoteList.SelectedItem.ToString();
-
-            var answer = MessageBox.Show("Are you sure you want to delete " + currentItem, "Delete File?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-   
-            if (answer == DialogResult.Yes)
+            if (lstNoteList.SelectedItem == null) { }
+            else
             {
-                rchNote.Clear();
-                txtTitle.Text = "";
+                string currentItem = lstNoteList.SelectedItem.ToString();
 
-                string titlePath = @"..\Dependencies\notes\!Titles.txt";
-
-                string[] fileArray = File.ReadAllLines(titlePath);
-                int Index = Array.IndexOf(fileArray, currentItem);
-                fileArray[Index] = "";
-
-                if (Index == fileArray.Length)
+                var answer = MessageBox.Show("Are you sure you want to delete " + currentItem, "Delete File?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+   
+                if (answer == DialogResult.Yes)
                 {
-                    Array.Resize(ref fileArray, Index - 1);
+                    rchNote.Clear();
+                    txtTitle.Text = "";
+
+                    string titlePath = @"..\Dependencies\notes\!Titles.txt";
+
+                    string[] fileArray = File.ReadAllLines(titlePath);
+                    int Index = Array.IndexOf(fileArray, currentItem);
+                    fileArray[Index] = "";
+
+                    if (Index == fileArray.Length)
+                    {
+                        Array.Resize(ref fileArray, Index - 1);
+                    }
+                    else
+                    {
+                        for (int i = Index; i < fileArray.Length - 1; i++)
+                        {
+                            fileArray[Index] = fileArray[Index + 1];
+                        }
+                        Array.Resize(ref fileArray, fileArray.Length - 1);
+                    }
+
+                    File.WriteAllLines(titlePath, fileArray);
+
+                    string path = @"..\Dependencies\notes\";
+                    path = path + currentItem + ".txt";
+                    File.Delete(path);
+                    Program.returned = "";
                 }
                 else
                 {
-                    for (int i = Index; i < fileArray.Length - 1; i++)
-                    {
-                        fileArray[Index] = fileArray[Index + 1];
-                    }
-                    Array.Resize(ref fileArray, fileArray.Length - 1);
+                    Program.returned = "";
                 }
 
-                File.WriteAllLines(titlePath, fileArray);
-
-                string path = @"..\Dependencies\notes\";
-                path = path + currentItem + ".txt";
-                File.Delete(path);
-                Program.returned = "";
+                LoadNoteList();
             }
-            else
-            {
-                Program.returned = "";
-            }
-
-            LoadNoteList();
         }
 
         private void pictureBox2_MouseHover(object sender, EventArgs e)
