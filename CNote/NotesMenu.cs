@@ -20,13 +20,13 @@ namespace CNote
             InitializeComponent();
         }
 
-        private void NotesMenu_Activated(object sender, EventArgs e)
+        public void LoadNoteList()
         {
             lstNoteList.Items.Clear();
-            string path = @"..\Dependencies\notes\!Titles.txt";
-            if (File.Exists(path))
+            string titlePath = @"..\Dependencies\notes\!Titles.txt";
+            if (File.Exists(titlePath))
             {
-                using (StreamReader sr = File.OpenText(path))
+                using (StreamReader sr = File.OpenText(titlePath))
                 {
                     string s;
                     while ((s = sr.ReadLine()) != null)
@@ -39,6 +39,11 @@ namespace CNote
             {
                 MessageBox.Show("File !Titles.txt is missing", "Critical Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void NotesMenu_Activated(object sender, EventArgs e)
+        {
+            LoadNoteList();
         }
 
         private void lstNoteList_SelectedIndexChanged(object sender, EventArgs e)
@@ -66,7 +71,7 @@ namespace CNote
             }
         }
 
-        private void pictureBox2_Click(object sender, EventArgs e)
+        private void pictureBox2_Click(object sender, EventArgs e)          //add note
         {
             string titlePath = @"..\Dependencies\notes\!Titles.txt";
             string newNotePath = @"..\Dependencies\notes\New Note.txt";
@@ -120,7 +125,7 @@ namespace CNote
             }
         }
 
-        private void pictureBox4_Click(object sender, EventArgs e)
+        private void pictureBox4_Click(object sender, EventArgs e)              //save changes
         {
             string titlePath = @"..\Dependencies\notes\!Titles.txt";
             string currentItem = lstNoteList.SelectedItem.ToString();
@@ -145,22 +150,7 @@ namespace CNote
             newPath = newPath + txtTitle.Text + ".txt";
             File.Move(path, newPath);
 
-            lstNoteList.Items.Clear();
-            if (File.Exists(titlePath))
-            {
-                using (StreamReader sr = File.OpenText(titlePath))
-                {
-                    string s;
-                    while ((s = sr.ReadLine()) != null)
-                    {
-                        lstNoteList.Items.Add(s);
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("File !Titles.txt is missing", "Critical Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            LoadNoteList();
 
         }
 
@@ -178,14 +168,13 @@ namespace CNote
 
         }//
 
-        private void pictureBox3_Click(object sender, EventArgs e)
+        private void pictureBox3_Click(object sender, EventArgs e)              //delete note
         {
             string currentItem = lstNoteList.SelectedItem.ToString();
-            var _delete = new InfoBox("Are you sure you want to delete " + currentItem);
-            Program.purpose = "DELFILE";
-            _delete.Show();
-                                                        //last edit, doesnt wait fo ran answer
-            if (Program.returned == "DEL")
+
+            var answer = MessageBox.Show("Are you sure you want to delete " + currentItem, "Delete File?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+   
+            if (answer == DialogResult.Yes)
             {
                 rchNote.Clear();
                 txtTitle.Text = "";
@@ -215,6 +204,8 @@ namespace CNote
                 Program.returned = "";
                 MessageBox.Show("it made it here");
             }
+
+            LoadNoteList();
         }
 
         private void pictureBox2_MouseHover(object sender, EventArgs e)

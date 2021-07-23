@@ -24,20 +24,11 @@ namespace CNote
             {
                 Application.Exit();
             }
-            if (Program.purpose == "DELFILE")
-            {
-                Program.returned = "DEL";
-                this.Close();
-            }
         }
 
         private void btnNo_Click(object sender, EventArgs e)
         {
             if (Program.purpose == "EXIT")
-            {
-                this.Close();
-            }
-            if (Program.purpose == "DELFILE")
             {
                 this.Close();
             }
