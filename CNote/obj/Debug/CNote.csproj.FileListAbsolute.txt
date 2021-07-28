@@ -13,3 +13,4 @@ F:\Github repos\CNote\CNote\obj\Debug\CNote.NotesMenu.resources
 F:\Github repos\CNote\CNote\bin\Debug\Newtonsoft.Json.dll
 F:\Github repos\CNote\CNote\bin\Debug\Newtonsoft.Json.xml
 F:\Github repos\CNote\CNote\obj\Debug\CNote.csproj.CopyComplete
+F:\Github repos\CNote\CNote\obj\Debug\CNote.ListMenu.resources

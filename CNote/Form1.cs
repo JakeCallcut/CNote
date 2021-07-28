@@ -37,8 +37,15 @@ namespace CNote
 
         private void btnNotes_Click(object sender, EventArgs e)
         {
-            NotesMenu _notes = new NotesMenu();
+            var _notes = new NotesMenu();
             _notes.Show();
+            this.Hide();
+        }
+
+        private void btnLists_Click(object sender, EventArgs e)
+        {
+            var _lists = new ListMenu();
+            _lists.Show();
             this.Hide();
         }
     }

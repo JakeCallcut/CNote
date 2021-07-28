@@ -49,12 +49,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddNote.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AddNote.Designer.cs">
-      <DependentUpon>AddNote.cs</DependentUpon>
-    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,6 +60,12 @@
     </Compile>
     <Compile Include="InfoBox.Designer.cs">
       <DependentUpon>InfoBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListMenu.Designer.cs">
+      <DependentUpon>ListMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="NotesMenu.cs">
       <SubType>Form</SubType>
@@ -80,6 +80,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InfoBox.resx">
       <DependentUpon>InfoBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListMenu.resx">
+      <DependentUpon>ListMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NotesMenu.resx">
       <DependentUpon>NotesMenu.cs</DependentUpon>

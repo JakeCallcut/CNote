@@ -249,5 +249,11 @@ namespace CNote
             pictureBox3.BackColor = Color.FromArgb(71, 170, 119);
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var _menu = new Menu();
+            _menu.Show();
+            this.Close();
+        }
     }
 }

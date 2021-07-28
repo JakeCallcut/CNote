@@ -112,6 +112,7 @@
             this.btnLists.TabIndex = 7;
             this.btnLists.Text = "View Lists";
             this.btnLists.UseVisualStyleBackColor = false;
+            this.btnLists.Click += new System.EventHandler(this.btnLists_Click);
             // 
             // btnShare
             // 
